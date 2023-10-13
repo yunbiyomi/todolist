@@ -28,7 +28,7 @@ function todoReducer(state, action) {
     case 'CREATE':
       return state.concat(action.todo);
     case 'REMOVE':
-      return state.map(todo => todo.id !== action.id);
+      return state.filter(todo => todo.id !== action.id);
     case 'TOGGLE':
       return state.map(todo => 
         todo.id === action.id 
