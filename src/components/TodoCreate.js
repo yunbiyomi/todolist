@@ -1,16 +1,43 @@
 import React, { useState } from 'react'
 import styled, { css } from 'styled-components';
 import { MdAdd } from 'react-icons/md';
+import { useTodoDispatch, useTodoNextId } from '../TodoContext';
 
 function TodoCreate() {
   const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState('');
+
+  const dispatch = useTodoDispatch();
+  const nextId = useTodoNextId();
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    dispatch({
+      type: 'CREATE',
+      todo: {
+        id: nextId.current,
+        text: value,
+        done: false
+      }
+    });
+
+    setValue('');
+    setIsOpen(false);
+    nextId.current += 1;
+  }
 
   return (
     <>
     {isOpen &&
       <InputContainer>
-        <InputForm>
-          <SInput placeholder='할 일을 입력한 뒤, Enter를 눌러주세요.'/>
+        <InputForm onSubmit={onSubmit}>
+          <SInput 
+            autoFocus
+            placeholder='할 일을 입력한 뒤, Enter를 눌러주세요.'
+            onChange={(e) => setValue(e.target.value)}
+            value={value}
+            />
         </InputForm>
       </InputContainer>
     }

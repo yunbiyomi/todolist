@@ -1,27 +1,6 @@
 import { createContext, useContext, useReducer, useRef } from "react";
 
-const initialTodos = [
-  {
-    id: 1,
-    text: '운동하기',
-    done: true
-  },
-  {
-    id: 2,
-    text: '코딩하기',
-    done: true
-  },
-  {
-    id: 3,
-    text: '독서하기',
-    done: false
-  },
-  {
-    id: 4,
-    text: '넷플릭스 보기',
-    done: false
-  }
-];
+const initialTodos = [];
 
 function todoReducer(state, action) {
   switch(action.type){
@@ -45,7 +24,7 @@ const TodoNextIdContext = createContext();
 
 export function TodoProvider({children}){
   const [state, dispatch] = useReducer(todoReducer, initialTodos);
-  const nextId = useRef(5);
+  const nextId = useRef(1);
 
   return (
     <TodoStateContext.Provider value={state}>
