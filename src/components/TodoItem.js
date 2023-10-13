@@ -50,7 +50,8 @@ const Check = styled.div`
 const Text = styled.div`
   flex: 1;
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 700;
+  justify-content: center;
   color: #2a0800;
 
   ${props =>

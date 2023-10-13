@@ -15,7 +15,10 @@ function TodoHead() {
         <SDate>{format(today, 'yyyy년 MM월 dd일')}</SDate>
         <SDay>{format(today, 'EEEE', { locale: ko })}</SDay>
       </DayWrap>
-      <TaskLeft>오늘의 할 일 {count}개 남았습니다.</TaskLeft>
+      {count > 0 
+        ? <TaskLeft>오늘의 할 일이 {count}개 남았습니다.</TaskLeft>
+        : <TaskLeft>오늘의 할 일이 다 끝났습니다.</TaskLeft>
+      }
     </TodoHeadContainer>
   )
 }
