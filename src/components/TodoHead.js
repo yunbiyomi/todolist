@@ -7,7 +7,7 @@ import { useTodoState } from '../TodoContext';
 function TodoHead() {
   const today = new Date();
   const todos = useTodoState();
-  console.log(todos);
+  const count = todos.filter(todo => !todo.done).length;
 
   return (
     <TodoHeadContainer>
@@ -15,7 +15,7 @@ function TodoHead() {
         <SDate>{format(today, 'yyyy년 MM월 dd일')}</SDate>
         <SDay>{format(today, 'EEEE', { locale: ko })}</SDay>
       </DayWrap>
-      <TaskLeft>오늘의 할 일 ?개 남았습니다.</TaskLeft>
+      <TaskLeft>오늘의 할 일 {count}개 남았습니다.</TaskLeft>
     </TodoHeadContainer>
   )
 }
