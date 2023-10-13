@@ -2,9 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 import { format } from 'date-fns';
 import { ko } from 'date-fns/locale';
+import { useTodoState } from '../TodoContext';
 
 function TodoHead() {
   const today = new Date();
+  const todos = useTodoState();
+  console.log(todos);
 
   return (
     <TodoHeadContainer>
