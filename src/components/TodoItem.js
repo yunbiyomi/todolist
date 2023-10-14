@@ -76,7 +76,7 @@ const RemoveText = styled.div`
 `;
 
 const TodoItemContainer = styled.div`
-  margin: 0 30px 20px 30px;
+  margin: 0 20px 20px 30px;
   display: flex;
   align-items: center;
 
